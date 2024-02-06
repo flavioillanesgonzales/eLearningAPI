@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: eLearningAPI
+server:
+  port: 8081

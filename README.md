@@ -187,26 +187,196 @@ questionId (PathVariable): The ID of the question.
 200 OK: Successful retrieval of the question.
 ```http
 {
-  "id": 1,
-  "text": "What is the capital of France?",
-  "type": "MULTIPLE_CHOICE",
-  "answers": [
-    {
-      "id": 1,
-      "text": "Paris",
-      "correct": true
-    },
-    {
-      "id": 2,
-      "text": "Berlin",
-      "correct": false
-    }
-  ]
+        "id": 2,
+        "text": "¿Qué es un servlet en Java?",
+        "type": "Marcar",
+        "score": 15,
+        "answers": [
+            {
+                "id": 5,
+                "text": "Un componente de interfaz de usuario en Java",
+                "correct": true
+            },
+            {
+                "id": 6,
+                "text": "Un tipo de base de datos",
+                "correct": false
+            },
+            {
+                "id": 7,
+                "text": "Una tecnología de red",
+                "correct": false
+            },
+            {
+                "id": 8,
+                "text": "Un lenguaje de programación",
+                "correct": false
+            }
+        ]
 }
 
 ```
 ```http
-401 Unauthorized: If the provided username or password is incorrect.
-{
-  "error": "Usuario o contraseña incorrectos"
-}
+404 Not Found: If the question with the specified ID is not found.
+
+
+--- 
+### Create Question
+### Enpoint
+```http
+POST /questions
+```
+#### Description
+Create a new question.
+
+Request
+text (RequestBody): The text of the question.
+type (RequestBody): The type of the question (e.g., "MULTIPLE_CHOICE", "TRUE_FALSE").
+answers (RequestBody): A list of answers for the question.
+
+#### Response
+200 Created: Successful creation of the question.
+
+--- 
+### Update Question
+### Enpoint
+```http
+PUT /questions/{questionId}
+```
+#### Description
+Update an existing question.
+
+Request
+text (RequestBody): The updated text of the question.
+type (RequestBody): The updated type of the question (e.g., "MULTIPLE_CHOICE", "TRUE_FALSE").
+answers (RequestBody): The updated list of answers for the question.
+
+#### Response
+200 OK: Successful update of the question.
+
+---
+
+### Delete Question
+### Enpoint
+```http
+DELETE /questions/{questionId}
+```
+#### Description
+Delete a specific question by its ID.
+
+Parameters
+questionId (PathVariable): The ID of the question.
+
+#### Response
+204 No Content: Successful deletion of the question.
+
+---
+
+### Get All Questions for Lesson
+### Enpoint
+```http
+GET /questions/lesson/{lessonId}
+```
+#### Description
+Retrieve a list of all questions for a specific lesson.
+
+Parameters
+lessonId (PathVariable): The ID of the lesson.
+
+#### Response
+200 OK: Successful retrieval of questions.
+
+---
+
+### Get All Questions for Lesson
+### Enpoint
+```http
+GET /questions/lesson/{lessonId}
+```
+#### Description
+Retrieve a list of all questions for a specific lesson.
+
+Parameters
+lessonId (PathVariable): The ID of the lesson.
+
+#### Response
+200 OK: Successful retrieval of questions.
+---
+- Course
+### Get All Courses
+### Enpoint
+```http
+GET /courses
+```
+#### Description
+Retrieve a list of all courses.
+
+#### Response
+200 OK: Successful retrieval of courses.
+```http
+  {
+    "id": 1,
+    "name": "Introduction to Programming",
+    "description": "Learn the basics of programming.",
+    "enrolled": true
+  },
+  {
+    "id": 2,
+    "name": "Web Development Fundamentals",
+    "description": "Explore the fundamentals of web development.",
+    "enrolled": false
+  }
+```
+
+---
+#### Get Course by ID
+### Enpoint
+```http
+GET /courses/{courseId}
+```
+#### Description
+Retrieve a specific course by its ID.
+
+### Parameters
+courseId (PathVariable): The ID of the course.
+
+### Response
+200 OK: Successful retrieval of the course.
+
+---
+#### Create Course
+### Enpoint
+```http
+POST /courses
+```
+#### Description
+Create a new course.
+
+### Request
+ame (RequestBody): The name of the course.
+description (RequestBody): The description of the course.
+
+### Response
+201 Created: Successful creation of the course.
+
+---
+#### Update Course
+### Enpoint
+```http
+PUT /courses/{courseId}
+```
+#### Description
+Update an existing course.
+
+### Parameters
+courseId (PathVariable): The ID of the course.
+
+### Request
+name (RequestBody): The updated name of the course.
+description (RequestBody): The updated description of the course.
+
+### Response
+200 OK: Successful update of the course.
+
+
+

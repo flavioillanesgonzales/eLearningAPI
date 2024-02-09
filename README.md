@@ -1,18 +1,8 @@
 # eLearningAPI
 ## Tabla de Contenido
 
-- User
-
-- Course
-
-  
-- Lesson
-
-  
-- Question
-
-  
-- Answer
+--- 
+## Answer
 The Answer Controller handles requests related to answers in the e-learning system.
 ## Get Answer by ID
 ### Enpoint
@@ -69,36 +59,8 @@ questionId (PathVariable): The unique identifier for the question.
 404 Not Found: If the question with the provided ID does not exist.
 
 
+
 ---
-
-- Login User
-### Enpoint
-```http
-POST /login/user
-```
-#### Description
-Authenticate a user by providing their username and password.
-
-#### Parameters
-username (RequestBody): The username of the user.
-password (RequestBody): The password of the user.
-
-#### Response
-200 OK: Successful retrieval of the answer.
-```http
-{
-  "id": 1,
-  "username": "frits",
-  "password": "******"
-}
-
-```
-```http
-401 Unauthorized: If the provided username or password is incorrect.
-{
-  "error": "Usuario o contraseña incorrectos"
-}
-```
 
 - Question
 ## Get All Questions
@@ -360,7 +322,7 @@ description (RequestBody): The description of the course.
 201 Created: Successful creation of the course.
 
 ---
-#### Update Course
+## Update Course
 ### Enpoint
 ```http
 PUT /courses/{courseId}
@@ -379,4 +341,110 @@ description (RequestBody): The updated description of the course.
 200 OK: Successful update of the course.
 
 
+---
+## Delete Course
+### Enpoint
+```http
+DELETE /courses/{courseId}
+```
+### Description
+Delete a specific course by its ID.
+
+### Parameters
+courseId (PathVariable): The ID of the course.
+
+### Request
+name (RequestBody): The updated name of the course.
+description (RequestBody): The updated description of the course.
+
+### Response
+204 No Content: Successful deletion of the course.
+
+
+---
+## Get All Courses for User
+### Enpoint
+```http
+GET /courses/user/{userId}
+```
+### Description
+Retrieve a list of all courses for a specific user.
+
+### Parameters
+userId (PathVariable): The ID of the user.
+
+### Response
+200 OK: Successful retrieval of courses.
+```http
+[
+    {
+        "id": 1,
+        "name": "Introducción a la Programación",
+        "description": "Curso introductorio sobre programación",
+        "enrolled": true
+    },
+    {
+        "id": 2,
+        "name": "Desarrollo Web con Java",
+        "description": "Aprende a desarrollar aplicaciones web con Java",
+        "enrolled": true
+    },
+    {
+        "id": 3,
+        "name": "Machine Learning con Python",
+        "description": "Exploración de algoritmos de aprendizaje automático",
+        "enrolled": false
+    }
+]
+```
+---
+## Submit Answers
+### Enpoint
+```http
+POST /learning/submitAnswers/{userId}/{courseId}
+```
+### Description
+Submit answers for a lesson.
+
+### Parameters
+userId (PathVariable): The ID of the user.
+courseId (PathVariable): The ID of the course.
+
+### Request
+lessonId (RequestBody): The ID of the lesson.
+answers (RequestBody): A list of question-answer pairs for the lesson.
+
+### Response
+200 OK: Successful submission of answers.
+
+---
+
+## Login User (In progressing)
+### Enpoint
+```http
+POST /login/user
+```
+#### Description
+Authenticate a user by providing their username and password.
+
+#### Parameters
+username (RequestBody): The username of the user.
+password (RequestBody): The password of the user.
+
+#### Response
+200 OK: Successful retrieval of the answer.
+```http
+{
+  "id": 1,
+  "username": "frits",
+  "password": "******"
+}
+
+```
+```http
+401 Unauthorized: If the provided username or password is incorrect.
+{
+  "error": "Usuario o contraseña incorrectos"
+}
+```
 

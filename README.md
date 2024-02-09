@@ -14,23 +14,27 @@
   
 - Answer
 The Answer Controller handles requests related to answers in the e-learning system.
-### Enpoints
+## Get Answer by ID
+### Enpoint
+```http
 GET /answers/{answerId}
-
-Description
+```
+#### Description
 Retrieve details for a specific answer by providing its unique identifier.
 
-Parameters
+#### Parameters
 answerId (PathVariable): The unique identifier for the answer.
 
-Response
+#### Response
 200 OK: Successful retrieval of the answer.
-
-json
-Copy code
+```http
 {
-  "id": 1,
-  "text": "Sample Answer",
-  "correct": true
+    "id": 1,
+    "text": "JavaScript",
+    "correct": true
 }
+```
 404 Not Found: If the answer with the provided ID does not exist.
+
+
+

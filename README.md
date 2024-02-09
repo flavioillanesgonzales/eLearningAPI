@@ -101,32 +101,112 @@ password (RequestBody): The password of the user.
 ```
 
 - Question
-## Get All Answers for a Question
+## Get All Questions
 ### Enpoint
 ```http
-GET /answers/question/{questionId}
+GET /questions
 ```
 #### Description
-Retrieve all answers associated with a specific question.
-
-#### Parameters
-questionId (PathVariable): The unique identifier for the question.
+Retrieve a list of all questions.
 
 #### Response
-200 OK: Successful retrieval of the answer.
+200 OK: Successful retrieval of questions.
 ```http
 [
     {
         "id": 1,
-        "text": "JavaScript",
-        "correct": true
+        "text": "¿Cuál es el lenguaje de programación más utilizado en el desarrollo web?",
+        "type": "Marcar",
+        "score": 15,
+        "answers": [
+            {
+                "id": 1,
+                "text": "JavaScript",
+                "correct": true
+            },
+            {
+                "id": 2,
+                "text": "Python",
+                "correct": false
+            },
+            {
+                "id": 3,
+                "text": "Java",
+                "correct": false
+            },
+            {
+                "id": 4,
+                "text": "HTML",
+                "correct": false
+            }
+        ]
     },
     {
         "id": 2,
-        "text": "Python",
-        "correct": false
+        "text": "¿Qué es un servlet en Java?",
+        "type": "Marcar",
+        "score": 15,
+        "answers": [
+            {
+                "id": 5,
+                "text": "Un componente de interfaz de usuario en Java",
+                "correct": true
+            },
+            {
+                "id": 6,
+                "text": "Un tipo de base de datos",
+                "correct": false
+            },
+            {
+                "id": 7,
+                "text": "Una tecnología de red",
+                "correct": false
+            },
+            {
+                "id": 8,
+                "text": "Un lenguaje de programación",
+                "correct": false
+            }
+        ]
     }
 ]
 
 ```
-404 Not Found: If the question with the provided ID does not exist.
+### Get Question by ID
+### Enpoint
+```http
+GET /questions/{questionId}
+```
+#### Description
+Retrieve a specific question by its ID.
+
+#### Parameters
+questionId (PathVariable): The ID of the question.
+
+#### Response
+200 OK: Successful retrieval of the question.
+```http
+{
+  "id": 1,
+  "text": "What is the capital of France?",
+  "type": "MULTIPLE_CHOICE",
+  "answers": [
+    {
+      "id": 1,
+      "text": "Paris",
+      "correct": true
+    },
+    {
+      "id": 2,
+      "text": "Berlin",
+      "correct": false
+    }
+  ]
+}
+
+```
+```http
+401 Unauthorized: If the provided username or password is incorrect.
+{
+  "error": "Usuario o contraseña incorrectos"
+}

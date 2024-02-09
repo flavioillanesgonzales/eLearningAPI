@@ -36,5 +36,35 @@ answerId (PathVariable): The unique identifier for the answer.
 ```
 404 Not Found: If the answer with the provided ID does not exist.
 
+---
 
+## Get All Answers for a Question
+### Enpoint
+```http
+GET /answers/question/{questionId}
+```
+#### Description
+Retrieve all answers associated with a specific question.
+
+#### Parameters
+questionId (PathVariable): The unique identifier for the question.
+
+#### Response
+200 OK: Successful retrieval of the answer.
+```http
+[
+    {
+        "id": 1,
+        "text": "JavaScript",
+        "correct": true
+    },
+    {
+        "id": 2,
+        "text": "Python",
+        "correct": false
+    }
+]
+
+```
+404 Not Found: If the answer with the provided ID does not exist.
 

@@ -66,5 +66,67 @@ questionId (PathVariable): The unique identifier for the question.
 ]
 
 ```
-404 Not Found: If the answer with the provided ID does not exist.
+404 Not Found: If the question with the provided ID does not exist.
 
+
+---
+
+- Login User
+### Enpoint
+```http
+POST /login/user
+```
+#### Description
+Authenticate a user by providing their username and password.
+
+#### Parameters
+username (RequestBody): The username of the user.
+password (RequestBody): The password of the user.
+
+#### Response
+200 OK: Successful retrieval of the answer.
+```http
+{
+  "id": 1,
+  "username": "frits",
+  "password": "******"
+}
+
+```
+```http
+401 Unauthorized: If the provided username or password is incorrect.
+{
+  "error": "Usuario o contraseña incorrectos"
+}
+```
+
+- Question
+## Get All Answers for a Question
+### Enpoint
+```http
+GET /answers/question/{questionId}
+```
+#### Description
+Retrieve all answers associated with a specific question.
+
+#### Parameters
+questionId (PathVariable): The unique identifier for the question.
+
+#### Response
+200 OK: Successful retrieval of the answer.
+```http
+[
+    {
+        "id": 1,
+        "text": "JavaScript",
+        "correct": true
+    },
+    {
+        "id": 2,
+        "text": "Python",
+        "correct": false
+    }
+]
+
+```
+404 Not Found: If the question with the provided ID does not exist.

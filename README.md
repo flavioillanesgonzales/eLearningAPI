@@ -19,10 +19,11 @@ Spring Security: Integrated for robust authentication and authorization mechanis
 H2 Database: Chosen as an in-memory database for development and testing purposes. H2 allows rapid prototyping without the need for an external database setup.
 ## Install App
 ### Build app
+### Go to the directory and execute the following commands
 docker build -t e-learning-api .
 
 ### Run Docker container
-docker run -p 8080:8080 e-learning-api
+docker run -p 8081:8081 e-learning-api
 
 ## Endpoints Api
 ## Answer

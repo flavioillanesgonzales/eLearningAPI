@@ -1,10 +1,14 @@
 package com.faig.elearningapi.model;
 
-import jakarta.persistence.*;
+import lombok.Data;
 
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-@Entity
+@Data
+@Entity(name = "Course")
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,4 +20,6 @@ public class Course {
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Lesson> lessons;
 
+    @ManyToMany(mappedBy = "courses")
+    private Set<User> users = new HashSet<>();
 }

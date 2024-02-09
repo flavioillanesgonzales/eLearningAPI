@@ -1,12 +1,11 @@
 package com.faig.elearningapi.controller;
 
+import com.faig.elearningapi.dto.LessonDTO;
 import com.faig.elearningapi.model.Lesson;
 import com.faig.elearningapi.service.LessonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,14 +14,34 @@ import java.util.List;
 public class LessonController {
     @Autowired
     private LessonService lessonService;
-
-    @GetMapping("/course/{courseId}")
-    public List<Lesson> getLessonsByCourseId(@PathVariable Long courseId) {
-        return lessonService.getLessonsByCourseId(courseId);
+    @GetMapping
+    public List<LessonDTO> getAllLessons() {
+        return lessonService.getAllLessons();
     }
-
     @GetMapping("/{lessonId}")
-    public Lesson getLessonById(@PathVariable Long lessonId) {
+    public LessonDTO getLessonById(@PathVariable Long lessonId) {
         return lessonService.getLessonById(lessonId);
     }
+    @PostMapping
+    public ResponseEntity<Lesson> createLesson(@RequestBody Lesson lesson) {
+        Lesson createdLesson = lessonService.createLesson(lesson);
+        return ResponseEntity.ok(createdLesson);
+    }
+
+    @PutMapping("/{lessonId}")
+    public ResponseEntity<Lesson> updateLesson(@PathVariable Long lessonId, @RequestBody Lesson updatedLesson) {
+        Lesson updated = lessonService.updateLesson(lessonId, updatedLesson);
+        return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/{lessonId}")
+    public ResponseEntity<Void> deleteLesson(@PathVariable Long lessonId) {
+        lessonService.deleteLesson(lessonId);
+        return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/course/{courseId}")
+    public List<LessonDTO> getAllLessonsForCourse(@PathVariable Long courseId) {
+        return lessonService.getAllLessonsForCourse(courseId);
+    }
+
 }

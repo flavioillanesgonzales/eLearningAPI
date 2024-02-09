@@ -1,7 +1,9 @@
 package com.faig.elearningapi.model;
+import lombok.Data;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
+@Data
 @Entity
 public class Answer {
     @Id
@@ -9,6 +11,8 @@ public class Answer {
     private Long id;
 
     private String text;
+
+    @Column(name = "is_correct")
     private boolean isCorrect;
 
     @ManyToOne

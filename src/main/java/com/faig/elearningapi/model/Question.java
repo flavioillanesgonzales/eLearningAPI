@@ -1,9 +1,10 @@
 package com.faig.elearningapi.model;
+import lombok.Data;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.util.List;
 
+@Data
 @Entity
 public class Question {
     @Id

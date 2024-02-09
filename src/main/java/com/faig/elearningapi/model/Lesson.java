@@ -1,9 +1,9 @@
 package com.faig.elearningapi.model;
+import lombok.Data;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.util.List;
-
+@Data
 @Entity
 public class Lesson {
     @Id
@@ -13,6 +13,9 @@ public class Lesson {
     private String title;
     private String content;
 
+    @Column(name = "lesson_order")
+    private Long lessonOrder;
+    private int passing_score;
     @ManyToOne
     @JoinColumn(name = "course_id")
     private Course course;

@@ -1,7 +1,30 @@
 # eLearningAPI
-## Tabla de Contenido
+The E-Learning API is designed to serve as a backend service for an e-learning platform. It facilitates the management of courses, lessons, questions, and user interactions within the platform. The primary goal is to provide a robust and secure foundation for building a feature-rich e-learning application.
+## Table of Content
+### 1. Technologies Used
+### 2. Install App
+### 3. Endpoints Api
 
---- 
+## Technologies Used
+Java: Chosen for its platform independence, strong community support, and extensive ecosystem. Java enables the development of scalable and maintainable applications.
+
+Spring Framework: Utilized for its comprehensive features, including dependency injection, data access, and transaction management. The Spring ecosystem simplifies development and promotes modular and testable code.
+
+Spring Boot: Selected for its convention-over-configuration approach, which accelerates project setup and reduces boilerplate code. Spring Boot simplifies the development of production-ready applications.
+
+Spring Security: Integrated for robust authentication and authorization mechanisms. Spring Security ensures the secure handling of user authentication, protecting sensitive data and operations.
+
+
+
+H2 Database: Chosen as an in-memory database for development and testing purposes. H2 allows rapid prototyping without the need for an external database setup.
+## Install App
+### Build app
+docker build -t e-learning-api .
+
+### Run Docker container
+docker run -p 8080:8080 e-learning-api
+
+## Endpoints Api
 ## Answer
 The Answer Controller handles requests related to answers in the e-learning system.
 ## Get Answer by ID

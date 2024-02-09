@@ -132,7 +132,6 @@ Retrieve a list of all questions.
         ]
     }
 ]
-
 ```
 ### Get Question by ID
 ### Enpoint
@@ -178,7 +177,6 @@ questionId (PathVariable): The ID of the question.
 }
 
 ```
-```http
 404 Not Found: If the question with the specified ID is not found.
 
 

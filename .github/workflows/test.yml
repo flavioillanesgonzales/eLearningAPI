@@ -20,6 +20,7 @@ jobs:
   
   ls:
     runs-on: ubuntu-latest
+    needs: hola
     steps:
       - name: ls
         run: ls -al

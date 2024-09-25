@@ -13,11 +13,13 @@ jobs:
         run: ls -al
 
                     
-      - name: Setup Node.js environment              
-        uses: actions/setup-node@v4.0.4
+      - name: Setup Java JDK              
+        uses: actions/setup-java@v4.4.0
 
-      - name: node version
-        run: node --version
+
+
+      - name: java version
+        run: java --version
 
 
 

@@ -1,23 +1,27 @@
 name: Hola Munso
 
-on: [push]
+on: [push , pull_request]
 
 jobs:
   hola:
     runs-on: ubuntu-latest
     steps:
-      - name: Hola Mundo
-        run: echo "Hola Mundo"
+      - name: Checkout
+        uses: action/Checkout@4.1.7
 
-      - name: Touch File
-        run: touch hola-mundo.txt
+      
+      - name: ls
+        run: ls -al
 
-      - name: set text
-        run: echo "Hola mi Mundo text" >> hola-mundo.txt
+                    
+      - name: Setup Node.js environment              
+        uses: actions/setup-node@v4.0.4
 
-      - name: read file
-        run: cat hola-mundo.txt
-  
+      - name: node version
+        run: node --version
+
+
+
   ls:
     runs-on: ubuntu-latest
     needs: hola

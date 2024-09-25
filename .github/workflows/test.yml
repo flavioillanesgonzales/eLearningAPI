@@ -17,6 +17,8 @@ jobs:
         uses: actions/setup-java@v4.4.0
         with:
           distribution: temurin
+          java-version: '21'
+
 
 
 

@@ -1,4 +1,4 @@
-name: Hola Munso
+name: test
 
 on: [push , pull_request]
 
@@ -29,11 +29,12 @@ jobs:
       - name: show principal
         run: ls -la
 
-      - name: show ls cd .. to target
-        run: │
+      - name: Show ls and navigate to target
+        run: |
           ls
           cd /target
           ls -al
+
 
 
 

@@ -26,6 +26,10 @@ jobs:
         run: ls -la target
 
 
+      - name: show principal
+        run: ls -la
+
+
 
 
 

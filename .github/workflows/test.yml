@@ -32,7 +32,7 @@ jobs:
       - name: Show ls and navigate to target
         run: |
           ls
-          cd /target
+          cd target
           ls -al
 
 

@@ -30,7 +30,7 @@ jobs:
         run: ls -la
 
       - name: show ls cd .. to target
-        run: │ 
+        run: │
           ls
           cd /target
           ls -al

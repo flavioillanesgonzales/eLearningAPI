@@ -19,8 +19,11 @@ jobs:
           distribution: temurin
           java-version: '17'
 
+      - name: Test
+        run: mvn test
+
       - name: build and package project
-        run: mvn -f pom.xml clean package
+        run: mvn package -DskipTests
 
       - name: show target
         run: ls -la target

@@ -44,17 +44,10 @@ class AnswerControllerTest {
 
     @Test
     void getAnswerById() {
-        // Configurar el mock para que devuelva un Optional que contiene la respuesta
         Mockito.when(answerRepository.findById(1L)).thenReturn(Optional.of(answer));
-
-        // Ejecutar el método que estás probando
         AnswerDTO result = answerService.getAnswerById(1L);
-
-        // Validaciones
-        assertNotNull(result); // Asegurar que el resultado no sea nulo
+        assertNotNull(result);
         assertEquals("JavaScript", result.getText());
-
-        // Verificar que el método findById fue llamado en el mock
         Mockito.verify(answerRepository).findById(1L);
     }
 
